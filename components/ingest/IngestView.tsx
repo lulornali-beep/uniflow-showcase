@@ -104,12 +104,8 @@ export default function IngestView() {
       const result = await response.json()
 
       if (result.success && result.data) {
-        // 如果有上传的图片 URL，添加到解析结果中
-        const dataWithImage = {
-          ...result.data,
-          image_url: uploadedImageUrl || undefined,
-        }
-        setParsedData(dataWithImage)
+        // 解析成功
+        setParsedData(result.data)
         setLogs(prev => [...(result.logs || []), `✅ AI 识别成功`])
       } else {
         setLogs([`❌ ${result.error || '识别失败'}`])
@@ -221,7 +217,6 @@ export default function IngestView() {
           key_info: parsedData.key_info || {},
           summary: parsedData.summary || '',
           raw_content: rawContentToPublish,
-          image_url: parsedData.image_url || imageUrl || undefined,
         }),
       })
 
