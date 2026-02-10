@@ -159,7 +159,6 @@ export default function IngestView() {
           key_info: parsedData.key_info || {},
           summary: parsedData.summary || '',
           raw_content: rawContentToSave,
-          image_url: parsedData.image_url || imageUrl || undefined,
         }),
       })
 
